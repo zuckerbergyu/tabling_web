@@ -27,7 +27,9 @@ const ReservationDetail = (props: Props) => {
                 <TableCell sx={styles.cellTitle} scope="row">
                   예약 상태
                 </TableCell>
-                <TableCell sx={styles.cellInfo}>{props.data?.status}</TableCell>
+                <TableCell sx={styles.cellInfo}>
+                  {props.data?.status === "seated" ? "착석 중" : "예약"}
+                </TableCell>
               </TableRow>
               <TableRow>
                 <TableCell sx={styles.cellTitle} scope="row">

@@ -39,22 +39,19 @@ export default function Home() {
 
   // 퇴석/착석 버튼 클릭
   const handleSubmit = (reservation: Reservation) => {
+    const index = reservationData.findIndex(
+      (item) => item?.id === reservation.id
+    );
+    const temp = reservationData.slice();
     if (reservation.status === "seated") {
-      const index = reservationData.findIndex(
-        (item) => item?.id === reservation.id
-      );
-      const temp = reservationData.slice();
       temp.splice(index, 1);
       setReservationData(temp);
     } else {
-      const index = reservationData.findIndex(
-        (item) => item?.id === reservation.id
-      );
-      const temp = reservationData.slice();
       const selected = temp[index];
       temp.splice(index, 1, { ...selected, status: "seated" });
       setReservationData(temp);
     }
+    setReservationDetailData(temp[index]);
   };
 
   // 예약 상세
